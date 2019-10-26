@@ -170,13 +170,13 @@ function App() {
             <div className={classes.Excercise2}>
                 <TodoList
                     todos={initialTodos}
-                    onChangeOrder={todos => onChangeOrder(todos)}
+                    onChangeOrder={onChangeOrder}
                 />
                 <div className={classes.NextTasks}>
                     <h1>Próximas tarefas:</h1>
                     <ul>
                         {Object.keys(nextActivities).map(category => (
-                            <li>
+                            <li key={category}>
                                 <strong>{category}</strong>:{" "}
                                 {nextActivities[category]}
                             </li>

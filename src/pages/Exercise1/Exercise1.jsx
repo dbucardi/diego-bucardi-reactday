@@ -43,6 +43,16 @@ class Exercise1 extends Component {
         return pokemonNumber;
     };
 
+    setSelectedElement(index) {
+        const availableElements = this.state.availableElements.filter((item, i) => index !== i);
+        const selectedItem = this.state.availableElements[index];
+        const selectedElements = [...this.state.selectedElements];
+        selectedElements.push(selectedItem);
+        this.setState(() => {
+            return {availableElements, selectedElements };
+        });
+    }
+
     render() {
         return (
             <div className={classes.Exercise1}>
@@ -63,11 +73,7 @@ class Exercise1 extends Component {
                                             </div>
                                         </td>
                                         <td className={classes.Action}>
-                                            <PokeballIcon onClick={() => {
-                                                this.setState({
-                                                        selectedElements: this.state.availableElements.splice(index, 1).concat(this.state.selectedElements)
-                                                });
-                                            }} />
+                                            <PokeballIcon onClick={() => this.setSelectedElement(index)} />
                                         </td>
                                     </tr>
                                 ))}
